@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: tastelens
+    env: python
+    plan: free
+    buildCommand: "true"
+    startCommand: "python3 app.py"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      # Set QLOO_API_KEY in the Render dashboard (secret, never in git).
+      # Without it the service runs in DEMO mode on labelled mock data.

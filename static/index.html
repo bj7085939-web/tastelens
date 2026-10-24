@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TasteLens — recommendations with receipts</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <div class="brand">🧭 TasteLens</div>
+  <div id="mode" class="mode">checking mode…</div>
+</header>
+<main>
+  <h1>Tell us what you love. Get a weekend, with receipts.</h1>
+  <p class="sub">TasteLens takes 2–3 things you already love — a film, a book,
+     an artist, a place — asks the <strong>Qloo taste graph</strong> what sits
+     next to them across every cultural domain, and writes you a briefing where
+     <em>every recommendation carries its affinity score and its evidence</em>.
+     No black-box “because you watched…” — the receipts are the product.</p>
+
+  <div id="mock-banner" class="mock-banner" hidden>
+    ⚠️ DEMO MODE — running on clearly-labelled mock data while the Qloo
+    hackathon API key is provisioned. Structure and pipeline are real;
+    the entities and scores are illustrative stand-ins, not Qloo output.
+  </div>
+
+  <h2>Try a preset</h2>
+  <div id="presets" class="presets"></div>
+
+  <h2>Or bring your own seeds</h2>
+  <form id="seed-form">
+    <div class="seed-row">
+      <input class="seed-name" type="text" autocomplete="off" placeholder="e.g. Amélie">
+      <select class="seed-type">
+        <option value="">any type</option><option>movie</option><option>book</option>
+        <option>artist</option><option>podcast</option><option>tv_show</option>
+        <option>destination</option><option>place</option>
+      </select>
+    </div>
+    <div class="seed-row">
+      <input class="seed-name" type="text" autocomplete="off" placeholder="e.g. Radiohead">
+      <select class="seed-type">
+        <option value="">any type</option><option>movie</option><option>book</option>
+        <option selected>artist</option><option>podcast</option><option>tv_show</option>
+        <option>destination</option><option>place</option>
+      </select>
+    </div>
+    <div class="seed-row">
+      <input class="seed-name" type="text" autocomplete="off" placeholder="e.g. Norwegian Wood">
+      <select class="seed-type">
+        <option value="">any type</option><option>movie</option><option selected>book</option>
+        <option>artist</option><option>podcast</option><option>tv_show</option>
+        <option>destination</option><option>place</option>
+      </select>
+    </div>
+    <div class="seed-row">
+      <input id="location" type="text" autocomplete="off"
+             placeholder="Optional: a city for place picks (e.g. Tokyo)">
+      <button type="submit" id="go">Build my briefing</button>
+    </div>
+  </form>
+  <div id="status" class="status"></div>
+
+  <section id="result" hidden>
+    <div class="bar">
+      <h2>Your weekend briefing</h2>
+      <div id="coverage" class="coverage"></div>
+    </div>
+    <div id="briefing" class="answer"></div>
+    <div id="domains"></div>
+    <h2>Evidence</h2>
+    <div id="evidence" class="sources"></div>
+  </section>
+</main>
+<footer>
+  Built for the Qloo Agentic Hackathon · Recommendations: Qloo Taste AI API
+  (taste graph, explainability) · Citation audit: ported from CiteLens
+</footer>
+<script src="/static/app.js"></script>
+</body>
+</html>
