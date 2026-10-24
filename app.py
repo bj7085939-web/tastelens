@@ -28,7 +28,7 @@ Modes:
     is never presented as real Qloo output.
 
 Zero third-party dependencies: Python 3.10+ standard library only.
-Run:  python3 app.py            (http://127.0.0.1:8000)
+Run:  python3 app.py            (http://0.0.0.0:8000)
 Env:  QLOO_API_KEY, QLOO_BASE_URL, PORT
 """
 
@@ -347,8 +347,8 @@ def main():
     cfg = Config()
     client = make_client(cfg)
     mode = "LIVE (Qloo API)" if cfg.live else "DEMO (mock data — no QLOO_API_KEY)"
-    print(f"TasteLens on http://127.0.0.1:{cfg.port}  mode={mode}", file=sys.stderr)
-    ThreadingHTTPServer(("127.0.0.1", cfg.port),
+    print(f"TasteLens on http://0.0.0.0:{cfg.port}  mode={mode}", file=sys.stderr)
+    ThreadingHTTPServer(("0.0.0.0", cfg.port),
                         make_handler(cfg, client)).serve_forever()
 
 
